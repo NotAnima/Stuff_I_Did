@@ -5,9 +5,9 @@ public class loanpack {
     double annualInterestRate = 2.5, loanAmount = 1000;
     int numberOfYears = 1; //numbers of years for the loan, defaulted to 1;
     java.util.Date loanDate = new java.util.Date();
-    public loanpack(java.util.Date packDate)
+    public loanpack()
     {   //constructor
-        this.loanDate = packDate;
+
     }
     public loanpack(double packAnnualInterestRate, double packLoanAmount, int packNumYears)
     {   //constructor
