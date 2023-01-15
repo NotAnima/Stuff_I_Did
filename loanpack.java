@@ -46,22 +46,14 @@ public class loanpack {
     {
         this.loanAmount = loanAmount;
     }
-    public void getMonthlyPayment(double payment)
+    public double getMonthlyPayment()
     {
-        double monthlyInterestRate = annualInterestRate/12;
-        double numerTemp = loanAmount*monthlyInterestRate;
-        double inside = Math.pow((1+monthlyInterestRate),numberOfYears*12);
-        double denomTemp = 1 - (1/inside);
-        double monthlyPayment = numerTemp/denomTemp;
-        System.out.printf("\nMonthly Payment amount is: %.2f.\n",monthlyPayment);
+        double monthlyPayment = (loanAmount*(annualInterestRate/1200))/(1-(1/(Math.pow(1+(annualInterestRate/1200),numberOfYears*12))));
+        return monthlyPayment;
     }
-    public void TotalPayment(double payment)
+    public void TotalPayment()
     {
-        double monthlyInterestRate = annualInterestRate/12;
-        double numerTemp = loanAmount*monthlyInterestRate;
-        double inside = Math.pow((1+monthlyInterestRate),numberOfYears*12);
-        double denomTemp = 1 - (1/inside);
-        double monthlyPayment = numerTemp/denomTemp;
+        double monthlyPayment = this.getMonthlyPayment();
         double totalPayment = monthlyPayment*numberOfYears*12;
         System.out.printf("\nThe total payment is: %.2f.\n",totalPayment);
     }
