@@ -14,8 +14,9 @@ public class Lab3
         System.out.println();
         loanpack instantiate = new loanpack(annualRate, loanAmt, (int)years);
         instantiate.getLoanDate();
-        instantiate.getMonthlyPayment(loanAmt);
-        instantiate.TotalPayment(loanAmt);
+        double monthlyPayment = instantiate.getMonthlyPayment();
+        System.out.printf("The monthly payment is %.2f", monthlyPayment);
+        instantiate.TotalPayment();
         System.out.println();
         inputObj.close();
     }
