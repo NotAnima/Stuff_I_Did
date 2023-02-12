@@ -83,7 +83,7 @@ public class Lab6 {
         System.out.println("After swap: ");
         System.out.println(set);
         System.out.println("_______________________________");
-        //good because HashSet operations are way faster than LinkedLists, but not in this context, only good if we
+        //It's a bad idea. It's only good if we
         //do not care about the order of the elements afterwards. Had to convert the LinkedHashSet into a List.
         //and then iterate through which is O(n), and then .add() and .remove() which is O(1). Resulting in O(n+m)
         //whereas, if we did not care about order-post, all operations would be O(1).
