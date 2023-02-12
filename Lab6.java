@@ -8,6 +8,7 @@ public class Lab6 {
         q4();
         q5();
         q6();
+        inputObj.close();
     }
 
     public static void q1()
