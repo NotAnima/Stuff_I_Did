@@ -93,7 +93,7 @@ def handle(connection, addressOfClient):
             old_name = data[1]
             new_name = data[2]
             dataToSend = rename_file(old_name, new_name)
-            connection.second(dataToSend.encode(FORMAT))
+            connection.send(dataToSend)
 
         elif cmd == "QUIT":
             connection.send("DISCONNECTED@Disconnecting you from the server...".encode(FORMAT))
