@@ -36,34 +36,76 @@ def main():
         elif cmd == "UPLD":
             files = os.listdir(CLIENT_DATA_PATH)
             filename = data[1]
+            dataToSend = f'{cmd} {filename}'
+            client.send(dataToSend.encode(FORMAT))
+            old_data = data
+            data = client.recv(BUFFER).decode(FORMAT)
+            data = data.split("@")
             try:
                 if filename not in files:
                     raise FileNotFoundError
                 else:
-                    filepath = CLIENT_DATA_PATH + '/' + data[1]
-                    #filepath = os.path.basename(filepath)
+                    if data[0] == "FILEEXISTS":
+                        print("This file already exists, do you want to override it? Y/N")
+                        userInput = input(">")
+                        userInput = userInput.strip(" ")
+                        if userInput == "Y":
+                            filepath = CLIENT_DATA_PATH + '/' + old_data[1]
+                            #filepath = os.path.basename(filepath)
+                            with open(filepath, 'rb') as file:
+                    # get the size of the file
+                                filesize = os.path.getsize(filepath)
+                                filename = os.path.basename(filepath)
+                                client.send(f'Y {cmd} {filename} {filesize}'.encode(FORMAT))
+                                data = client.recv(BUFFER).decode(FORMAT)
+                                data = data.split("@")
+                                if data[0] == "OK":
+                                    bytesSent = 0
+                                    while True:
+                                        if filesize<BUFFER:
+                                            client.send(file.read(filesize))
+                                            bytesSent += filesize
+                                            break
+                                        else:
+                                            packet = file.read(BUFFER)
+                                            if not packet:
+                                                break #end of file
+                                            client.sendall(packet)
+                                            bytesSent += BUFFER
+                                    print("Bytes sent: "+str(bytesSent))
+                                    if bytesSent >= filesize:
+                                        dataToSend = f"SUCCESS Successfully Overrided File: <{filename}>"
+                                        client.send(dataToSend.encode(FORMAT))
+                                
+                        else:
+                            client.send("OK N".encode(FORMAT))
+                    elif data[0] == "NOEXIST":
+                        filepath = CLIENT_DATA_PATH + '/' + old_data[1]
+                        with open(filepath, 'rb') as file:
+                            filesize = os.path.getsize(filepath) # get the size of the file
+                            filename = os.path.basename(filepath)
+                            client.send(f'{cmd} {filename} {filesize}'.encode(FORMAT))
+                            bytesSent = 0
+                            while True:
+                                if filesize<BUFFER:
+                                    client.send(file.read(filesize))
+                                    bytesSent += filesize
+                                    break
+                                else:
+                                    packet = file.read(BUFFER)
+                                    if not packet:
+                                        break #end of file
+                                    client.sendall(packet)
+                                    bytesSent += BUFFER
+                            print("Bytes sent: "+str(bytesSent))
+                            if bytesSent >= filesize:
+                                    dataToSend = f"SUCCESS Successfully Uploaded File: <{filename}>"
+                                    client.send(dataToSend.encode(FORMAT))
 
-                    with open(filepath, 'rb') as file:
-            # get the size of the file
-                        filesize = os.path.getsize(filepath)
-                        filename = os.path.basename(filepath)
-                        client.send(f'{cmd} {filename} {filesize}'.encode(FORMAT))
-                        bytesSent = 0
-                        while True:
-                            if filesize<BUFFER:
-                                client.send(file.read(filesize))
-                                bytesSent += filesize
-                                break
-                            else:
-                                packet = file.read(BUFFER)
-                                if not packet:
-                                    break #end of file
-                                client.sendall(packet)
-                                bytesSent += BUFFER
-                        print("Bytes sent: "+str(bytesSent))
             except FileNotFoundError:
                 client.send(f"SUCCESS Failed to upload: <{filename}>".encode(FORMAT))
-                           
+
+
 
         elif cmd == "DWLD":
             client.send(f'{cmd} {data[1]}'.encode(FORMAT))

@@ -30,24 +30,52 @@ def handle(connection, addressOfClient):
         elif cmd == "FAILURE":
             pass
         elif cmd == "UPLD":
+            files = os.listdir(SERVER_DATA_PATH)
             filename = data[1]
-            filesize = ""
-            stringFileSize = data[2]
-            for char in stringFileSize:
-                if char.isdigit():
-                    filesize += char
-            filesize = int(filesize)
-            with open(os.path.join(SERVER_DATA_PATH, filename), "wb") as file: #file writing in binary
-                bytes_received = 0
-                while bytes_received < filesize:
-                    chunk = connection.recv(BUFFER)
-                    if not chunk:
-                        break
-                    file.write(chunk)
-                    bytes_received += len(chunk)
-                if bytes_received >= filesize:
-                    connection.send(f"OK@File: <{filename}> uploaded successfully".encode(FORMAT))
-
+            if filename in files:
+                connection.send("FILEEXISTS@This file already exists, do you want to override it? Y/N".encode(FORMAT))
+                data = connection.recv(BUFFER).decode(FORMAT)
+                data = data.split(" ")
+                if data[0] == "Y":
+                    connection.send("OK@".encode(FORMAT))
+                    filesize = ""
+                    stringFileSize = data[3]
+                    for char in stringFileSize:
+                        if char.isdigit():
+                            filesize += char
+                    filesize = int(filesize)
+                    with open(os.path.join(SERVER_DATA_PATH, filename), "wb") as file: #file writing in binary
+                        bytes_received = 0
+                        while bytes_received < filesize:
+                            chunk = connection.recv(BUFFER)
+                            if not chunk:
+                                break
+                            file.write(chunk)
+                            bytes_received += len(chunk)
+                        if bytes_received >= filesize:
+                            connection.send(f"OK@File: <{filename}> uploaded successfully".encode(FORMAT))
+                elif data[1] == "N":
+                    connection.send("OK@Did not override file".encode(FORMAT))
+            else:
+                connection.send("NOEXIST@".encode(FORMAT))
+                data = connection.recv(BUFFER).decode(FORMAT)
+                data = data.split(" ")
+                filesize = ""
+                stringFileSize = data[2]
+                for char in stringFileSize:
+                    if char.isdigit():
+                        filesize += char
+                filesize = int(filesize)
+                with open(os.path.join(SERVER_DATA_PATH, filename), "wb") as file: #file writing in binary
+                    bytes_received = 0
+                    while bytes_received < filesize:
+                        chunk = connection.recv(BUFFER)
+                        if not chunk:
+                            break
+                        file.write(chunk)
+                        bytes_received += len(chunk)
+                    if bytes_received >= filesize:
+                        connection.send(f"OK@File: <{filename}> uploaded successfully".encode(FORMAT))
 
         elif cmd == "DWLD":
             filepath = SERVER_DATA_PATH + '/' + data[1]
