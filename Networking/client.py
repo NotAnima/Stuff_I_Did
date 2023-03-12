@@ -34,28 +34,37 @@ def main():
             client.send(cmd.encode(FORMAT))
 
         elif cmd == "UPLD":
-            filepath = CLIENT_DATA_PATH + '/' + data[1]
-            #filepath = os.path.basename(filepath)
+            files = os.listdir(CLIENT_DATA_PATH)
+            filename = data[1]
+            try:
+                if filename not in files:
+                    raise FileNotFoundError
+                else:
+                    filepath = CLIENT_DATA_PATH + '/' + data[1]
+                    #filepath = os.path.basename(filepath)
 
-            with open(filepath, 'rb') as file:
-    # get the size of the file
-                filesize = os.path.getsize(filepath)
-                filename = os.path.basename(filepath)
-                client.send(f'{cmd} {filename} {filesize}'.encode(FORMAT))
-                bytesSent = 0
-                while True:
-                    if filesize<BUFFER:
-                        client.send(file.read(filesize))
-                        bytesSent += filesize
-                        break
-                    else:
-                        packet = file.read(BUFFER)
-                        if not packet:
-                            break #end of file
-                        client.sendall(packet)
-                        bytesSent += BUFFER
-                print("Bytes sent: "+str(bytesSent))
-                  
+                    with open(filepath, 'rb') as file:
+            # get the size of the file
+                        filesize = os.path.getsize(filepath)
+                        filename = os.path.basename(filepath)
+                        client.send(f'{cmd} {filename} {filesize}'.encode(FORMAT))
+                        bytesSent = 0
+                        while True:
+                            if filesize<BUFFER:
+                                client.send(file.read(filesize))
+                                bytesSent += filesize
+                                break
+                            else:
+                                packet = file.read(BUFFER)
+                                if not packet:
+                                    break #end of file
+                                client.sendall(packet)
+                                bytesSent += BUFFER
+                        print("Bytes sent: "+str(bytesSent))
+            except FileNotFoundError:
+                client.send(f"SUCCESS Failed to upload: <{filename}>".encode(FORMAT))
+                           
+
         elif cmd == "DWLD":
             client.send(f'{cmd} {data[1]}'.encode(FORMAT))
             data = client.recv(BUFFER).decode(FORMAT)

@@ -27,6 +27,8 @@ def handle(connection, addressOfClient):
             connection.send(dataToSend.encode(FORMAT))
         elif cmd == "SUCCESS":
             connection.send(f"OK@{data[1]} {data[2]} {data[3]} {data[4]}".encode(FORMAT))
+        elif cmd == "FAILURE":
+            pass
         elif cmd == "UPLD":
             filename = data[1]
             filesize = ""
