@@ -77,6 +77,9 @@ def handle_rename(connection, oldFileName, newFileName):
         dataToSend += "OK@The server has no files in it."
         connection.sendall(dataToSend.encode(FORMAT))
     else:
+        if newFileName in files:
+            connection.sendall(f'OK@FILE {newFileName} already exists in the server'.encode(FORMAT))
+            return
         if oldFileName in files:
             old_path = os.path.join(SERVER_DATA_PATH, oldFileName)
             new_path = os.path.join(SERVER_DATA_PATH, newFileName)
