@@ -108,6 +108,9 @@ def handle(connection, addressOfClient):
                     handle_upload(connection, filename, filesize)               
                 elif reply[0] == "PASS":
                     connection.send("OK@Did not override file".encode(FORMAT))
+            else:
+                connection.sendall("NO".encode(FORMAT))
+                handle_upload(connection, filename, filesize)
            
         elif cmd == "DWLD":
             #def handle_download(connection,filename,filesize):
