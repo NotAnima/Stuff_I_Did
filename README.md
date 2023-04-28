@@ -55,9 +55,8 @@ PORTFORWARDING THE SERVER:
 
 1) Access into your router and add a new rule to the router on UDP/TCP that allows the port for external port: 25565 and indicated for the server to be the internal port: 25565 by default, unless changed otherwise
 # Normally you would need to enable inbound/outbound firewalls for this on the same ports on UDP/TCP, but raspberry pi doesn't seem to inherently have this inbuilt (correct me if I am wrong, but ufw is an installed apt).
-# This allows people from outside your network to access the minecraft server if you provide them your public ip address which you can easily find out by googling:
- "What is my ip address?"
-# NOTE: Public IP address leased by your router can and probably will change every so often, usually 7-14 days per lease. So the IP address used to connect to the server will probably be different after sometime.
+- This allows people from outside your network to access the minecraft server if you provide them your public ip address which you can easily find out by googling: "What is my ip address?"
+- NOTE: Public IP address leased by your router can and probably will change every so often, usually 7-14 days per lease. So the IP address used to connect to the server will probably be different after sometime.
 
 AUTOMATION PROCESS:
 1) $ cd /home/pi/Minecraft_Server (this is my folders name, it could be different from yours)
@@ -69,7 +68,7 @@ AUTOMATION PROCESS:
   -Ctrl+O -> Enter -> Ctrl+X to save the file
   
 3) $ chmod 777 reboot.sh
-   #This gives a lot of permissions to reboot.sh
+   - This gives a lot of permissions to reboot.sh
    
 4) $ crontab -e
   - Select nano if it's the first time entering crontab -e. Navigate to the bottom of the crontab and add these lines:
