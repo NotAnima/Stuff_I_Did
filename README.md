@@ -3,7 +3,7 @@
 Using only the linux terminal and shell commands with cron jobs to fully automate the minecraft server without the usage of screens or GUI.
 All the lines with the "$" symbol attached to it indicate that it's something you have to enter into the linux terminal and not something you actually include yourself.
 
-#SETTING UP THE SERVER ON LOCALHOST:
+# SETTING UP THE SERVER ON LOCALHOST:
 
 1) Make sure that the raspberry pi is properly connected to the internet. WI-FI or Ethernet connection is fine
 - SSH into your raspberry PI
