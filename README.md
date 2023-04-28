@@ -37,6 +37,9 @@ All the lines with the "$" symbol attached to it indicate that it's something yo
   # https://www.minecraft.net/en-us/download/server use this website link and right click copy link address on the minecraft_server.jar download href
 
 7) $ java -Xmx1024M -Xms1024M -jar server.jar nogui
+  - Important to have java installed on the raspberry pi, if it's the lite version, it does not come with java.
+  - Use $ java --version to check current java version
+  - Do $ sudo apt install default-jdk
   - NOTE: that running /server.jar or ./server.jar most likely will not work because there is not enough RAM for the server to even load properly
   - In the future, you can change 1024 to any number greater than the current available RAM size. Do note that it shouldn't really go above ~85-90% of the total RAM     (assuming that you are not running any extra things that consumes RAM like chromium browser)
   - Let the server generate the world and then type "/stop" or "stop" after you see a "DONE" message on the terminal.
