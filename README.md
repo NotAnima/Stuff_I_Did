@@ -20,7 +20,7 @@ SETTING UP THE SERVER ON LOCALHOST:
 3) Set a static IP for your raspberry pi within your own private network (192.168.x.x):
   3.1) $ cd /etc
   3.2) $ nano dhcpcd.conf
-  # Default gateway can be easily found out on a windows system under cmd using ipconfig /all and ip route on a linux terminal
+  # Default gateway can be easily found out on a windows system under cmd using ipconfig /all OR ip route on a linux terminal
   3.3) at the top of the .conf file add these lines:
     interface eth0
     static ip_address=x.x.x.x/24 
