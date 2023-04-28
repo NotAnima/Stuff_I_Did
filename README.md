@@ -42,6 +42,7 @@ All the lines with the "$" symbol attached to it indicate that it's something yo
   - Do $ sudo apt install openjdk-17-jdk -y to get java17
   - NOTE: that running /server.jar or ./server.jar most likely will not work because there is not enough RAM for the server to even load properly
   - In the future, you can change 1024 to any number greater than the current available RAM size. Do note that it shouldn't really go above ~85-90% of the total RAM     (assuming that you are not running any extra things that consumes RAM like chromium browser)
+  - If you are not sure roughly how much RAM is being consumed at the current moment do $ ps aux to check all currently running programs in the background, it also gives the RAM breakdown in percentages.
   - Let the server generate the world and then type "/stop" or "stop" after you see a "DONE" message on the terminal.
   
 8) $ nano eula.txt
