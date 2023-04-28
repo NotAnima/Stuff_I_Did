@@ -86,24 +86,23 @@ All the lines with the "$" symbol attached to it indicate that it's something yo
 5) Select that domain name server
 #NOTE: the domain is only HTTP so it is not as secure as it would be, but it's a free domain, so use it at your own risk.
 6) SSH into your raspberry PI and do the following to make the DNS dynamic: (or just follow what is on the website)
-    6.1) $ cd /home/pi && mkdir duckdns
-    6.2) $ cd duckdns
-    6.3) $ vi duck.sh
-    6.4) Copy and paste (right click in the terminal to paste) the token provided by duckdns into the shell file
-    6.5) Escape -> :wq! -> Enter
-    6.6) $ chmod 700 duck.sh
-    6.7) $ ./duck.sh
-    6.8) $ cat duck.log to check if the response was "OK", if yes, then all is well. If it is "KO" something went wrong. Go back to 6.3) or just follow the website.
-      - the output should be something like:
-        "OKpi@raspberrypi:~/duckdns $ "
-    6.9) $ crontab -e
-      - Navigate to the bottom of the crontab and enter this:
-        "*/5 * * * * /home/pi/duckdns/duck.sh >> /home/pi/duckdns/duck.log 2>&1 &" not including the "    " quotations, make sure the path for executing duck.sh
-      - The above shell file basically updates the Public IP Address of your raspberry PI and changes the DNS redirect of the free name server on duckdns.org every 5 minutes.
-      - Ctrl+O -> Enter -> Ctrl+X to save and exit. Make sure to not include @reboot at the front like the previous cron jobs because it invalid crontab syntax
+    - 6.1) $ cd /home/pi && mkdir duckdns
+    - 6.2) $ cd duckdns
+    - 6.3) $ vi duck.sh
+    - 6.4) Copy and paste (right click in the terminal to paste) the token provided by duckdns into the shell file
+    - 6.5) Escape -> :wq! -> Enter
+    - 6.6) $ chmod 700 duck.sh
+    - 6.7) $ ./duck.sh
+    - 6.8) $ cat duck.log to check if the response was "OK", if yes, then all is well. If it is "KO" something went wrong. Go back to 6.3) or just follow the website.
+      -- the output should be something like: "OKpi@raspberrypi:~/duckdns $ "
+    - 6.9) $ crontab -e
+      -- Navigate to the bottom of the crontab and enter this:
+        --- "*/5 * * * * /home/pi/duckdns/duck.sh >> /home/pi/duckdns/duck.log 2>&1 &" not including the "    " quotations, make sure the path for executing duck.sh
+      -- The above shell file basically updates the Public IP Address of your raspberry PI and changes the DNS redirect of the free name server on duckdns.org every 5 minutes.
+      -- Ctrl+O -> Enter -> Ctrl+X to save and exit. Make sure to not include @reboot at the front like the previous cron jobs because it invalid crontab syntax
         and it causes it to not function properly.
-    6.10) $ sudo service cron start
-      - This just starts the new cron job that you added into the crontab file. It shouldn't affect any of the previous jobs currently executing.
+    - 6.10) $ sudo service cron start
+      -- This just starts the new cron job that you added into the crontab file. It shouldn't affect any of the previous jobs currently executing.
 7) $ sudo reboot
 
 END:
