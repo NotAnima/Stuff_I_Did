@@ -76,8 +76,7 @@ AUTOMATION PROCESS:
     @reboot sleep 86400 && cd /home/pi/Minecraft_Server && /home/pi/Minecraft_Server/reboot.sh &
   - Once again, change the path of the information required to run the server.jar file if necessary.
   - Ctrl+O -> Enter -> Ctrl+X to exit
-  # Basically what this does is that it create cron jobs for the system to execute in the background upon bootup. You can now SSH into your PI and it won't affect
-   the server at all.
+  # Basically what this does is that it create cron jobs for the system to execute in the background upon bootup. You can now SSH into your PI and it won't affect the server at all.
    
 SETTING UP A DDNS:
 1) www.duckdns.org
