@@ -46,7 +46,7 @@ SETTING UP THE SERVER ON LOCALHOST:
 9) edit the eula.txt from false to TRUE and hit Ctrl+O -> Enter -> Ctrl+X
 
 10) From this point on, the server is entirely usable on a localhost where you can have people from the same local area network (same wifi) to join the server either by using localhost or x.x.x.x for the server.
-  $ java -Xmx3500M -Xms3500M -jar server.jar nogui
+  # $ java -Xmx3500M -Xms3500M -jar server.jar nogui
   Is the command I used to run my server for more RAM allocation to the server and load up the entire world
   Additionally you can OP your own character to make administration matters in the server easier later on
   #NOTE: The server will crash if you exit out of the SSH session at any point of time. So the next part is to have it run as a background process automatically
