@@ -21,13 +21,13 @@ All the lines with the "$" symbol attached to it indicate that it's something yo
   3.1) $ cd /etc
   3.2) $ nano dhcpcd.conf
   # Default gateway can be easily found out on a windows system under cmd using ipconfig /all OR ip route on a linux terminal
-  3.3) at the top of the .conf file add these lines:
-    - interface eth0
-    - static ip_address=x.x.x.x/24 
-    - #replacing x.x.x.x with the left over octets of your private network of the raspberry PI.
-    - static router = x.x.x.x
-    - #replacing x.x.x.x with the default gateway of your house (most likely the router). 
-    - static domain_name_server=8.8.8.8
+  At the top of the .conf file add these lines:
+- interface eth0
+- static ip_address=x.x.x.x/24 
+- #replacing x.x.x.x with the left over octets of your private network of the raspberry PI.
+- static router = x.x.x.x
+- #replacing x.x.x.x with the default gateway of your house (most likely the router). 
+- static domain_name_server=8.8.8.8
     
 4) $ cd /home/pi && mkdir folder_name
 
