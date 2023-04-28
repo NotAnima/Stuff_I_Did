@@ -3,7 +3,7 @@
 Using only the linux terminal and shell commands with cron jobs to fully automate the minecraft server without the usage of screens or GUI.
 All the lines with the "$" symbol attached to it indicate that it's something you have to enter into the linux terminal and not something you actually include yourself.
 
-SETTING UP THE SERVER ON LOCALHOST:
+#SETTING UP THE SERVER ON LOCALHOST:
 
 1) Make sure that the raspberry pi is properly connected to the internet. WI-FI or Ethernet connection is fine
 - SSH into your raspberry PI
@@ -51,14 +51,14 @@ SETTING UP THE SERVER ON LOCALHOST:
   Additionally you can OP your own character to make administration matters in the server easier later on
   #NOTE: The server will crash if you exit out of the SSH session at any point of time. So the next part is to have it run as a background process automatically
   
-PORTFORWARDING THE SERVER:
+#PORTFORWARDING THE SERVER:
 
 1) Access into your router and add a new rule to the router on UDP/TCP that allows the port for external port: 25565 and indicated for the server to be the internal port: 25565 by default, unless changed otherwise
 # Normally you would need to enable inbound/outbound firewalls for this on the same ports on UDP/TCP, but raspberry pi doesn't seem to inherently have this inbuilt (correct me if I am wrong, but ufw is an installed apt).
 - This allows people from outside your network to access the minecraft server if you provide them your public ip address which you can easily find out by googling: "What is my ip address?"
 - NOTE: Public IP address leased by your router can and probably will change every so often, usually 7-14 days per lease. So the IP address used to connect to the server will probably be different after sometime.
 
-AUTOMATION PROCESS:
+#AUTOMATION PROCESS:
 1) $ cd /home/pi/Minecraft_Server (this is my folders name, it could be different from yours)
 
 2) $ nano reboot.sh
@@ -78,7 +78,7 @@ AUTOMATION PROCESS:
   - Ctrl+O -> Enter -> Ctrl+X to exit
   # Basically what this does is that it create cron jobs for the system to execute in the background upon bootup. You can now SSH into your PI and it won't affect the server at all.
    
-SETTING UP A DDNS:
+#SETTING UP A DDNS: (Dynamic Domain Name Server)
 1) www.duckdns.org
 2) Login using any form of login method: I just used gmail login
 3) Name your sub domain to be whatever you want
