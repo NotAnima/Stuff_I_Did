@@ -99,6 +99,7 @@ All the lines with the "$" symbol attached to it indicate that it's something yo
     6.9) $ crontab -e
       - Navigate to the bottom of the crontab and enter this:
         "*/5 * * * * /home/pi/duckdns/duck.sh >> /home/pi/duckdns/duck.log 2>&1 &" not including the "    " quotations, make sure the path for executing duck.sh
+      - The above shell file basically updates the Public IP Address of your raspberry PI and changes the DNS redirect of the free name server on duckdns.org every 5 minutes.
       - Ctrl+O -> Enter -> Ctrl+X to save and exit. Make sure to not include @reboot at the front like the previous cron jobs because it invalid crontab syntax
         and it causes it to not function properly.
     6.10) $ sudo service cron start
