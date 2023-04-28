@@ -34,7 +34,7 @@ SETTING UP THE SERVER ON LOCALHOST:
 5) $ cd folder_name
 
 6) wget https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar
-  #https://www.minecraft.net/en-us/download/server use this website link and right click copy link address on the minecraft_server.jar download href
+  # https://www.minecraft.net/en-us/download/server use this website link and right click copy link address on the minecraft_server.jar download href
 
 7) $ java -Xmx1024M -Xms1024M -jar server.jar nogui
   # NOTE: that running /server.jar or ./server.jar most likely will not work because there is not enough RAM for the server to even load properly
