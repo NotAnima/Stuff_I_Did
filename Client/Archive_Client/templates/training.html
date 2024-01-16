@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}AI Training Model{% endblock %}
+{% block content %}
+{% if readyToTrain %}
+<form action="/trainModel" method = "post">
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 85vh; font-size: 50px;">
+<p><b>Model is ready for training: </b></p><br>       
+          <button>Start Training</button>
+</div>
+</form>
+{% else %}
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 85vh; font-size: 50px;">
+        <b><p>Model is not ready for training yet, please gather more</p></b>
+</div>
+
+{% endif%}
+
+{% endblock %}

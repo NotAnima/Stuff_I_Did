@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+service ModelService {
+    rpc UploadFile(stream Chunk) returns (UploadFileResponse);
+    rpc DiffModel(HashValue) returns (HashCompared);
+    rpc sendWeight(sentWeights) returns (weightResponse);
+    rpc getModel(startValue) returns (initialModel);
+}
+
+message Chunk {
+  bytes content = 1;
+}
+
+message UploadFileResponse {
+  string message = 1;
+}
+
+message HashValue {
+  string clientHash = 1;
+}
+
+message HashCompared {
+  bool HashResult = 1;
+}
+
+message sentWeights {
+  repeated int32 shape = 1;  
+  repeated float weights = 2;
+  repeated float bias = 3;
+}
+
+message weightResponse {
+  repeated int32 shape = 1;  
+  repeated float weights = 2; 
+  repeated float bias = 3;
+}
+
+message initialModel {
+  repeated int32 shape = 1;  
+  repeated float weights = 2; 
+  repeated float bias = 3;
+}
+
+message startValue {
+  int32 number = 1;
+}

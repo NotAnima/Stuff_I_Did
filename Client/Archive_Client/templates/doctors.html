@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}The Doctors Backlog{% endblock %}
+{% block content %}
+{%  if personList|length >= 1 %}
+  <form action="/doctors" method = "post">
+      <div class="container-sm">
+        {% for person in personList %}
+        <b><label for="Patient {{ loop.index+1 }}">Patient: {{ loop.index }}</label></b>
+        <br><br>
+        <div>
+          <table class="table table-bordered">
+            <tr>
+              <td>Blood Pressure</td>
+              <td><b>{{ person.high_bp }}</b></td>
+            </tr>
+            <tr>
+              <td>Cholesterol Levels</td>
+              <td><b>{{ person.high_chol }}</b></td>
+            </tr>
+            <tr>
+              <td>Recent (5 years) Cholesterol Levels</td>
+              <td><b>{{ person.chol_check }}</b></td>
+            </tr>
+            <tr>
+              <td>BMI</td>
+              <td><b>{{ person.bmi }}</b></td>
+            </tr>
+            <tr>
+              <td>Smoking Status</td>
+              <td><b>{{ person.smoker }}</b></td>
+            </tr>
+            <tr>
+              <td>Stroke Status</td>
+              <td><b>{{ person.stroke }}</b></td>
+            </tr>
+            <tr>
+              <td>Heart Disease or Attack</td>
+              <td><b>{{ person.heart_disease_or_attack }}</b></td>
+            </tr>
+            <tr>
+              <td>Physical Activity</td>
+              <td><b>{{ person.phys_activity }}</b></td>
+            </tr>
+            <tr>
+              <td>Fruits consumption</td>
+              <td><b>{{ person.fruits }}</b></td>
+            </tr>
+            <tr>
+              <td>Veggies</td>
+              <td><b>{{ person.veggies }}</b></td>
+            </tr>
+            <tr>
+              <td>Alcohol consumption</td>
+              <td><b>{{ person.hvy_alcohol_consump }}</b></td>
+            </tr>
+            <tr>
+              <td>Physical Health</td>
+              <td><b>{{ person.phys_hlth }}</b></td>
+            </tr>
+            <tr>
+              <td>Difficulties Walking</td>
+              <td><b>{{ person.diff_walk }}</b></td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td><b>{{ person.sex }}</b></td>
+            </tr>
+            <tr>
+              <td>Age Group</td>
+              <td><b>{{ person.age }}</b></td>
+            </tr>
+          </table>
+          
+        </div>
+
+        <input type="radio" name= "{{ loop.index }}" value="0">
+        <label for="patientNoDiabetes">No Diabetes</label><br>
+        <input type="radio" name= "{{ loop.index }}" value="2">
+        <label for="patientNoDiabetes">Diabetes</label><br><br>
+          
+        {% endfor %}
+        <br>
+        <input type="submit" name="submit" value="I hereby declare these patients categorised!">
+        <br><br><br>
+      </div>
+  </form>
+
+{% else %} 
+<div class="container-fluid">
+  <p>Currently {{ personList|length }} Patients to categorise... Go relax somewhere</p>
+</div>
+{% endif %}
+
+{% endblock %}
