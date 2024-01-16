@@ -1,0 +1,119 @@
+:root {
+    --primary: #FFFFFF;
+    --primary-variant: #3700B3;
+    --secondary: #000000;
+    --secondary-variant: #03DAC6;;
+    --background: #121212;
+    --surface: #121212;
+    --error: #CF6679;
+    --on-primary: #000000;
+    --on-secondary: #FFFFFF;
+    --on-background: #FFFFFF;
+    --on-surface: #FFFFFF;
+    --on-error: #000000;
+}
+
+@media print {
+    #print-button {
+        display: none;
+    }
+
+    #sidebarMenu {
+        display: none;
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.primary {
+    background-color: var(--primary);
+}
+
+.on-primary {
+    color: var(--on-primary);
+}
+
+.btn-primary {
+    background-color: var(--secondary);
+    color: var(--on-secondary);
+    border-color: var(--on-secondary);
+}
+
+.nav-link {
+    color: var(--on-primary);
+}
+
+.h1-style {
+    font-size: 96px;
+    font-weight: lighter;
+    letter-spacing: -1.5;
+}
+
+.h2-style {
+    font-weight: lighter;
+    letter-spacing: -0.5;
+    font-size: 60px;
+}
+
+.h3-style {
+    font-weight: normal;
+    font-size: 48px;
+    letter-spacing: 0;
+}
+
+.h4-style {
+    font-size: 34px;
+    font-weight: normal;
+    letter-spacing: 0.25;
+}
+
+.h5-style {
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
+.h6-style {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.15;
+}
+
+.subtitle-1 {
+    font-size: 16px;
+    letter-spacing: 0.15;
+    font-weight: normal;
+}
+
+.subtitle-2 {
+    font-size: 14px;
+    letter-spacing: 0.1;
+    font-weight: bold;
+}
+
+.body-1 {
+    font-size: 16px;
+    letter-spacing: 0.5;
+    font-weight: normal;
+}
+
+.body-2 {
+    font-size: 16px;
+    letter-spacing: 0.5;
+    font-weight: normal;
+}
+
+.button-style {
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1.25;
+}
+
+
+
+/* CSS Styles for Dashboard */
+.nav span {
+    padding: 8px 16px;
+}
