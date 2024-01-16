@@ -1,0 +1,77 @@
+Priority
+Your Priority Scheduling Preemption choice is: False
+These are the properties of the nodes before it's being processed by the Algorithms
+
++-----------+--------------+------------+----------+
+| Processes | Arrival Time | Burst Time | Priority |
++-----------+--------------+------------+----------+
+|    P1     |      8       |     10     |     4    |
++-----------+--------------+------------+----------+
+|    P2     |      2       |     4      |     1    |
++-----------+--------------+------------+----------+
+|    P3     |      0       |     4      |     3    |
++-----------+--------------+------------+----------+
+|    P4     |      6       |     4      |     1    |
++-----------+--------------+------------+----------+
+|    P5     |      3       |     4      |     2    |
++-----------+--------------+------------+----------+
+|    P6     |      0       |     3      |     1    |
++-----------+--------------+------------+----------+
+
+
+Everything after this line is processed by scheduling Algorithms
+
+Gantt Chart For [Priority]:
++----+----+----+----+----+----+
+| P6 | P2 | P4 | P5 | P3 | P1 |
++----+----+----+----+----+----+
+0    3    7    11   15   19   29   
+
+FOR [Priority] ALGORITHM AVERAGES:
+Average Turn Around Time: 10.83, Average Waiting Time: 6.00, Average Response Time: 6.00
+------------------------------------------------------------------------------------------------------------------
+
+Gantt Chart For [FCFS]:
++----+----+----+----+----+----+
+| P6 | P3 | P2 | P5 | P4 | P1 |
++----+----+----+----+----+----+
+0    3    7    11   15   19   29   
+
+FOR [FCFS] ALGORITHM AVERAGES:
+Average Turn Around Time: 10.83, Average Waiting Time: 6.00, Average Response Time: 6.00
+------------------------------------------------------------------------------------------------------------------
+
+Gantt Chart For [SJF]:
++----+----+----+----+----+----+
+| P6 | P3 | P2 | P5 | P4 | P1 |
++----+----+----+----+----+----+
+0    3    7    11   15   19   29   
+
+FOR [SJF] ALGORITHM AVERAGES:
+Average Turn Around Time: 10.83, Average Waiting Time: 6.00, Average Response Time: 6.00
+------------------------------------------------------------------------------------------------------------------
+
+Gantt Chart For [SRTF]:
++----+----+----+----+----+----+
+| P6 | P3 | P2 | P5 | P4 | P1 |
++----+----+----+----+----+----+
+0    3    7    11   15   19   29   
+
+FOR [SRTF] ALGORITHM AVERAGES:
+Average Turn Around Time: 10.83, Average Waiting Time: 6.00, Average Response Time: 6.00
+------------------------------------------------------------------------------------------------------------------
+
+Gantt Chart For [RR]:
++----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+| P6 | P3 | P2 | P5 | P4 | P1 | P6 | P3 | P2 | P5 | P4 | P1 | P1 | P1 | P1 |
++----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+0    2    4    6    8    10   12   13   15   17   19   21   23   25   27   29   
+
+FOR [RR] ALGORITHM AVERAGES:
+Average Turn Around Time: 15.83, Average Waiting Time: 11.00, Average Response Time: 1.83
+------------------------------------------------------------------------------------------------------------------
+
+Priority Algorithm won: 
+-Average Turn Around Time
+-Average Waiting Time
+
