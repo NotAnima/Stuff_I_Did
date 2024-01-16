@@ -1,0 +1,24 @@
+[{
+  "1": {
+    "title": "Cloud Gate",
+    "tags": [
+      "Sculpture",
+      "Sights & Landmarks"
+    ],
+    "details": "Cloud Gate is the most recognizable Chicago landmark. The seamless sculpture reflects the Chicago skyline. And when you walk beneath it, it reflects you as well from myriad angles. Shaped similarly to a bean, it's affectionately referred to by locals as 'the bean'.",
+    "image_url": "images/travel-guides-1.jpeg"
+  },
+  "2": {
+    "title": "Fuente Crown",
+    "tags": [
+      "Fountain",
+      "Sights & Landmarks"
+    ],
+    "details": "Public sculpture with a pair of 50-ft. LED towers & a reflecting pool, By Jaume Plensa, a Catalan. You can also explore some of the park's iconic works of art, like the Crown Fountain and the Cloud Gate sculpture (also known as the Bean, pictured above). There will also be a number of special events going on in the park from late spring to early fall, so do a little research before your visit to see what's on. You can expect everything from prestigious concerts to fund food festivals to free yoga.",
+    "image_url": "images/travel-guides-2.jpeg"
+  },
+  "_id": {
+    "$oid": "64a2b9e08e2f52419b34dcd5"
+  },
+  "day": "Day 1"
+}]
